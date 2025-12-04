@@ -1,0 +1,24 @@
+# 🔑 Credenciales de Acceso (Datos de Prueba)
+
+Para probar los diferentes roles del sistema, utilice las siguientes cuentas precargadas:
+
+### 1. 🛡️ Administrador del Sistema
+* **Rol:** Aprobar/Rechazar ONGs.
+* **Correo:** `admin@hopechain.com`
+* **Contraseña:** `Admin123`
+* **Acceso:** Iniciar sesión y el sistema redirigirá al Panel de Admin.
+
+### 2. 🏢 Representante de ONG (Organización)
+* **Rol:** Crear campañas, ver estadísticas, editar perfil.
+* **Correo:** `ongprueba@gmail.com`
+* **Contraseña:** `ong123`
+* **Acceso:** Iniciar sesión y redirigirá al Dashboard de la ONG.
+
+### 3. 👤 Donante (Usuario Normal)
+* **Rol:** Realizar donaciones, comentar, ver historial personal.
+* **Correo:** `usuarioprueba@gmail.com`
+* **Contraseña:** `user123`
+* **Acceso:** Iniciar sesión y redirigirá al Home o Mi Cuenta.
+
+---
+**Nota:** La contraseña de la base de datos está encriptada (SHA256 + Salt), por lo que no se puede leer directamente en SQL. Use estas credenciales en el Login de la aplicación.
