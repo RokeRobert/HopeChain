@@ -5,7 +5,7 @@ Para probar los diferentes roles del sistema, utilice las siguientes cuentas pre
 ### 1. 🛡️ Administrador del Sistema
 * **Rol:** Aprobar/Rechazar ONGs.
 * **Correo:** `admin@hopechain.com`
-* **Contraseña:** `Admin123`
+* **Contraseña:** `admin123`
 * **Acceso:** Iniciar sesión y el sistema redirigirá al Panel de Admin.
 
 ### 2. 🏢 Representante de ONG (Organización)
