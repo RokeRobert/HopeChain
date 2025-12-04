@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONGs - HopeChain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!-- Asegúrate de que la ruta al CSS sea correcta desde donde sirves el HTML -->
+     <link rel="stylesheet" href="/CSS/base.css">
+    <link rel="stylesheet" href="/CSS/ONGs.css"> 
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+        <img src="/img/Logo/logo.png" alt="HopeChain Logo">
+    </div>
+    <nav>
+      <!--Se llena de manera Dinamica-->
+    </nav>
+ </header>
+
+   <section class="ongs-section">
+  <h2>ONGs Asociadas</h2>
+
+  <!-- Buscador -->
+  <input type="text" id="buscarOng" placeholder="Buscar ONG...">
+
+  <!-- Filtros (Los IDs de categoría deben coincidir con lo que devuelva tu BD, o mapearlos) -->
+  <div class="filter-buttons">
+    <button class="filter-btn active" data-category="all">Todas</button>
+    <button class="filter-btn" data-category="Educacion">Educación</button>
+    <button class="filter-btn" data-category="Salud">Salud</button>
+    <button class="filter-btn" data-category="Medio Ambiente">Medio Ambiente</button>
+    <button class="filter-btn" data-category="Alimentacion">Alimentación</button>
+  </div>
+
+  <!-- Mensaje de Estado (Carga/Error) -->
+  <div id="status-message" style="margin-bottom: 20px; color: #666;"></div>
+
+  <!-- Contenedor dinámico de ONGs -->
+  <div class="ongs-container">
+      <!-- Aquí se inyectarán las tarjetas via JS -->
+  </div>
+</section>
+<!-- MODAL CONFIRMAR CERRAR SESIÓN -->
+<div id="modalCerrarSesion" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.4); backdrop-filter:blur(4px);
+            justify-content:center; align-items:center; z-index:9999;">
+    
+    <div style="background:white; padding:25px; width:300px; border-radius:12px;
+                text-align:center; box-shadow:0 5px 20px rgba(0,0,0,0.15);">
+        
+        <h3 style="margin-bottom:10px;">¿Cerrar sesión?</h3>
+        <p style="margin-bottom:20px; color:#555;">Tu sesión se cerrará por completo.</p>
+
+        <button onclick="confirmarCerrarSesion()" 
+                style="background:#dc3545; color:white; padding:8px 20px; border:none; 
+                border-radius:8px; cursor:pointer; margin-right:10px;">
+            Sí, salir
+        </button>
+
+        <button onclick="cancelarCerrarSesion()" 
+                style="background:#ccc; padding:8px 20px; border:none; border-radius:8px; cursor:pointer;">
+            Cancelar
+        </button>
+    </div>
+</div>
+
+
+<!-- Scripts -->
+<!-- Asegúrate de que la ruta sea correcta -->
+<script src="/JS/ONGs.js"></script>
+<script src="/JS/header.js"></script>
+
+</body>
+</html>

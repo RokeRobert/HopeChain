@@ -1,0 +1,281 @@
+/* ESTILOS DEL HEADER DINÁMICO */
+
+/* Botón Iniciar Sesión */
+.btn-inicio-sesion {
+    background-color: transparent;
+    color: #333;
+    border: 2px solid #45c4b0;
+    border-radius: 30px;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: 0.3s;
+    margin-right: 10px;
+}
+.btn-inicio-sesion:hover {
+    background-color: #45c4b0;
+    color: white;
+}
+
+/* Botón Registrarse */
+.btn-registrarse {
+    background-color: #f4b000;
+    color: white !important;
+    border: 2px solid #f4b000;
+    border-radius: 30px;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: 0.3s;
+}
+.btn-registrarse:hover {
+    background-color: #d69a00;
+    border-color: #d69a00;
+}
+
+/* Botón Salir (Logout) */
+.btn-logout-header {
+    background: transparent;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    border-radius: 20px;
+    padding: 6px 15px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: inherit;
+    transition: 0.3s;
+}
+.btn-logout-header:hover {
+    background: #dc3545;
+    color: white;
+}
+
+/* Texto de Bienvenida */
+.user-welcome {
+    font-size: 0.9em;
+    color: #666;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+/* Ajuste para móviles (ocultar nombre si hay poco espacio) */
+@media (max-width: 768px) {
+    .user-welcome { display: none; }
+}
+
+
+/* =========================================
+   base.css - ESTILOS GLOBALES Y HEADER
+   ========================================= */
+
+/* 1. RESET Y FUENTES GLOBALES */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Fondo suave general */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* 2. HEADER (TU DISEÑO EXACTO) */
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 80px; /* mantiene altura fija */
+    overflow: hidden; /* oculta cualquier parte del logo que sobresalga */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: #2c82f6;
+    text-decoration: none; /* Quitamos subrayado si es un link */
+}
+
+.logo img {
+    height: 220px; /* Tu tamaño específico */
+    margin-right: 10px;
+    transform: translateY(6px); /* mueve el logo hacia arriba */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+nav a {
+    color: #333;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #2c82f6;
+}
+
+/* 3. BOTONES DEL HEADER (TUS ESTILOS) */
+
+.btn-inicio-sesion {
+    background-color: white;
+    color: #333;
+    border: 2px solid #45c4b0;
+    border-radius: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    text-decoration: none; /* Aseguramos que no tenga subrayado */
+    display: inline-block;
+}
+
+.btn-inicio-sesion:hover {
+    background-color: #45c4b0;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-registrarse {
+    background-color: #f4b000;
+    color: white !important;
+    padding: 10px 20px;
+    border: 2px solid #f4b000;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+    text-decoration: none; /* Aseguramos que no tenga subrayado */
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.btn-registrarse:hover {
+    background-color: #080808;
+    border: 2px solid #000000;
+}
+
+/* 4. ELEMENTOS DINÁMICOS (Para cuando el usuario hace login) */
+/* Adaptados a tu estilo de botones */
+
+.user-welcome {
+    font-weight: 500;
+    color: #555;
+    margin-right: 15px;
+    font-size: 0.95rem;
+}
+
+/* Botón Salir: Estilo similar al de iniciar sesión pero en Rojo */
+.btn-logout-header {
+    background-color: white;
+    color: #dc3545; /* Rojo peligro */
+    border: 2px solid #dc3545;
+    border-radius: 30px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif; /* Asegura misma fuente */
+}
+
+.btn-logout-header:hover {
+    background-color: #dc3545;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Ajustes Responsive básicos para el header */
+@media (max-width: 768px) {
+    header {
+        padding: 10px 20px;
+        height: auto;
+        flex-direction: column;
+        overflow: visible; /* En móvil a veces necesitamos ver más */
+    }
+    
+    .logo img {
+        height: 80px; /* Logo más pequeño en móvil */
+        transform: none;
+    }
+
+    nav {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav a {
+        margin: 5px 10px;
+    }
+    
+    .user-welcome {
+        display: none; /* Ocultar nombre en pantallas muy chicas */
+    }
+}
+
+
+
+
+
+
+/* Botón Mi Cuenta */
+.btn-micuenta {
+    background-color: #f0f8ff;
+    color: #2c82f6;
+    border: 2px solid #2c82f6;
+    border-radius: 30px;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-right: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-micuenta:hover {
+    background-color: #2c82f6;
+    color: white;
+}
+
+/* Botón Cerrar Sesión */
+.btn-logout {
+    background-color: transparent;
+    color: #dc3545; /* Rojo suave */
+    border: 2px solid #dc3545;
+    border-radius: 30px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif; /* Asegurar misma fuente */
+    font-size: 1rem; /* Misma medida que los enlaces */
+    transition: all 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Ajuste para móviles si es necesario */
+@media (max-width: 768px) {
+    #auth-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+        margin-left: 0 !important;
+    }
+}

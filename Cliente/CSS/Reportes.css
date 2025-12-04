@@ -1,0 +1,253 @@
+/* ====================================
+   1. RESET Y BASE
+   ==================================== */
+:root {
+    /* Variables de Color */
+    --color-primary: #007bff; /* Azul para botones principales */
+    --color-secondary: #28a745; /* Verde para éxito/transparencia */
+    --color-text: #333;
+    --color-background: #f8f9fa;
+    --color-border: #dee2e6;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+/* Contenedor Principal */
+.container, .perfil-container, .reports-container {
+    width: 90%;
+    max-width: 1400px; 
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* Fondo blanco general si se usa container */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Ajuste específico para reportes y perfil que usan background body */
+.perfil-container, .reports-container {
+    background-color: transparent; /* Dejar que se vea el fondo de body */
+    box-shadow: none;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    color: #343a40;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* ====================================
+   2. BOTONES Y FORMULARIOS
+   ==================================== */
+button, .btn-ver-detalle {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    text-decoration: none; 
+    display: inline-block;
+}
+
+button:hover, .btn-ver-detalle:hover {
+    background-color: #0056b3;
+}
+
+input[type="text"], select {
+    padding: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    margin-right: 10px;
+}
+
+/* ====================================
+   3. ESTILOS DE TABLA (Reportes y Perfil)
+   ==================================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+thead th {
+    background-color: #e9ecef;
+    color: #495057;
+    font-weight: bold;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* ====================================
+   4. LAYOUT ESPECÍFICO (MiCuenta.html)
+   ==================================== */
+.perfil-container { max-width: 1000px; margin: 40px auto; }
+.perfil-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+.card-perfil { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.perfil-header { text-align: center; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+.avatar-circle { width: 80px; height: 80px; background: #2c82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin: 0 auto 15px; font-weight: bold; }
+.dato-fila { margin-bottom: 15px; display: flex; justify-content: space-between; border-bottom: 1px solid #f5f5f5; padding-bottom: 5px; }
+.dato-label { font-weight: 600; color: #666; }
+.dato-valor { color: #333; font-weight: 500; }
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+.stat-card { background: #f8fafc; padding: 20px; border-radius: 10px; text-align: center; border: 1px solid #e0e0e0; }
+.stat-num { font-size: 2rem; font-weight: 700; color: #2c82f6; display: block; }
+.stat-label { font-size: 0.9rem; color: #666; }
+
+@media (max-width: 768px) { .perfil-grid { grid-template-columns: 1fr; } }
+
+/* ====================================
+   5. LAYOUT ESPECÍFICO (Reportes.html)
+   ==================================== */
+
+/* --- A. Filtros --- */
+.filtros {
+    background: white; 
+    padding: 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    display: flex; 
+    gap: 15px; 
+    margin-bottom: 30px; 
+    align-items: center; 
+    flex-wrap: wrap;
+    border-bottom: none; /* Override de estilo general h1/section */
+}
+.btn-filtrar { background: #2c82f6; color: white; padding: 8px 20px; border-radius: 6px; font-weight: 600; }
+
+/* --- B. Métricas Clave (Alineación Perfecta) --- */
+.metricas-clave {
+    display: grid;
+    /* Esto obliga a crear exactamente 3 columnas de igual tamaño */
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap: 25px; /* Espacio entre ellas */
+    margin-bottom: 30px;
+}
+
+.tarjeta {
+    background: white; 
+    padding: 25px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+    text-align: center;
+    border: 1px solid #eee;
+    /* Asegura que la tarjeta llene su columna */
+    width: 100%; 
+    box-sizing: border-box;
+}
+
+.tarjeta h3 { 
+    font-size: 1.1rem; 
+    color: #666; 
+    margin-bottom: 10px; 
+    font-weight: 500;
+}
+
+.monto-largo { 
+    font-size: 2.2rem; 
+    font-weight: 700; 
+    color: #2c82f6; 
+    margin: 0; 
+}
+
+/* --- RESPONSIVIDAD (Importante) --- */
+/* Solo cuando la pantalla sea de celular (menos de 768px), las ponemos en vertical */
+@media (max-width: 768px) {
+    .metricas-clave {
+        grid-template-columns: 1fr; /* 1 sola columna en móvil */
+    }
+}
+
+/* --- C. Visualizaciones (Gráficas) --- */
+.visualizaciones-data {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Columna pequeña para pastel, grande para tabla */
+    gap: 30px; 
+    margin-bottom: 40px;
+}
+
+.grafico-caja, .rendicion-cuentas {
+    background-color: #fff;
+    padding: 25px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    border: 1px solid var(--color-border);
+}
+
+.grafico-caja {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.grafico-caja canvas {
+    max-width: 100%;
+    max-height: 350px; 
+}
+
+/* --- D. Tabla de Distribución (NUEVO) --- */
+/* Barra de Progreso Bicolor */
+.progress-container {
+    width: 100%; 
+    height: 10px; 
+    background-color: #f0f0f0; 
+    border-radius: 5px;
+    display: flex; 
+    overflow: hidden; 
+    margin-top: 5px;
+}
+.bar-direct { background-color: #007bff; height: 100%; transition: width 1s; }
+.bar-campaign { background-color: #28a745; height: 100%; transition: width 1s; }
+
+/* Detalles numéricos bajo la barra */
+.money-detail { 
+    font-size: 0.8em; 
+    color: #666; 
+    margin-top: 5px; 
+    display: flex; 
+    gap: 15px; 
+}
+.legend-dot { 
+    width: 8px; 
+    height: 8px; 
+    border-radius: 50%; 
+    display: inline-block; 
+    margin-right: 4px; 
+}
+
+/* Botón Ver (Estilo Outline) */
+.btn-ver-detalle {
+    text-decoration: none; 
+    color: #007bff; 
+    border: 1px solid #007bff;
+    background: transparent; 
+    padding: 5px 15px; 
+    border-radius: 5px; 
+    font-weight: 600; 
+    transition: 0.3s;
+}
+.btn-ver-detalle:hover { 
+    background: #007bff; 
+    color: white; 
+}
+
+@media (max-width: 900px) { 
+    .visualizaciones-data { grid-template-columns: 1fr; } 
+}

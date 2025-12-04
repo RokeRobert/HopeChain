@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro - HopeChain</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/base.css">
+  <link rel="stylesheet" href="/CSS/registro.css">
+</head>
+<body class="registro-body">
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+        <img src="/img/Logo/logo.png" alt="HopeChain Logo">
+    </div>
+    <nav>
+      <!--Se llena de manera Dinamica-->
+      
+    </nav>
+ </header>
+
+  <!-- SECCIÓN REGISTRO -->
+  <section class="registro-section">
+    <div class="registro-box">
+      <div class="registro-image">
+        <img src="https://i.pinimg.com/736x/12/9b/31/129b3192181ae5efb8ab2781e7591671.jpg" alt="Donaciones HopeChain">
+      </div>
+
+      <div class="form-box">
+        <h2>Crear una cuenta</h2>
+        <p>Únete a HopeChain como donador y ayuda a construir un mundo más solidario 💛</p>
+
+        <form id="formRegistro">
+
+          <!-- Input oculto para el rol (Donador = 1) -->
+          <input type="hidden" id="rol" value="1"> 
+          
+          <!-- Datos Personales -->
+          <div class="input-group">
+            <label for="nombres">Nombre(s)</label>
+            <input type="text" id="nombres" placeholder="Ej. Ana" required>
+          </div>
+
+          <div class="row" style="display:flex; gap:10px;">
+              <div class="input-group" style="flex:1;">
+                <label for="apellidoP">Apellido Paterno</label>
+                <input type="text" id="apellidoP" placeholder="Ej. García" required>
+              </div>
+              <div class="input-group" style="flex:1;">
+                <label for="apellidoM">Apellido Materno</label>
+                <input type="text" id="apellidoM" placeholder="Ej. Pérez" required>
+              </div>
+          </div>
+
+          <div class="input-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="correo" placeholder="Ej. ana@example.com" required>
+          </div>
+
+          <div class="input-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="contrasena" placeholder="Mínimo 6 caracteres" minlength="6" required>
+          </div>
+          
+          <div class="input-group">
+            <label for="confirmarContrasena">Confirmar Contraseña</label>
+            <input type="password" id="confirmarContrasena" placeholder="Repite tu contraseña" required>
+          </div>
+
+          <div class="row" style="display:flex; gap:10px;">
+            <div class="input-group" style="flex:1;">
+                <label for="pais">País</label>
+                <select id="pais">
+                    <option value="1">México</option>
+                    <option value="2">Argentina</option>
+                    <option value="3">Colombia</option>
+                    <option value="4">Estados Unidos</option>
+                </select>
+            </div>
+            
+           
+            
+          </div>
+
+          <button type="submit" class="btn-acento btn-registrar">Registrarse</button>
+          
+          <p class="error-msg" id="mensajeError" style="color: red; margin-top: 10px; font-size: 0.9em; display:none;"></p>
+
+          <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #eee; text-align: center;">
+              <p style="font-size: 0.9em; color: #666; margin-bottom: 5px;">¿Representas a una Organización?</p>
+              <a href="RegistroOng.html" style="color: #2c82f6; font-weight: 600; text-decoration: none; border: 1px solid #2c82f6; padding: 6px 15px; border-radius: 20px; font-size: 0.85em; display: inline-block; transition: 0.3s;">
+                  Registrar mi ONG &rarr;
+              </a>
+          </div>
+
+          <p class="login-text" style="margin-top: 20px;">¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="copy">© 2025 HopeChain</p>
+  </footer>
+
+ <div id="svg-hearts"></div>
+
+ 
+ <script src="/JS/registro.js"></script>
+ <script src="/JS/header.js"></script>
+
+</body>
+</html>

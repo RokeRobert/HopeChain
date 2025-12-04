@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión | HopeChain</title>
+  <link rel="stylesheet" href="/CSS/base.css">
+  <link rel="stylesheet" href="/CSS/login.css">
+</head>
+<body class="login-body">
+
+    <header>
+    <div class="logo">
+        <img src="/img/Logo/logo.png" alt="HopeChain Logo">
+    </div>
+    <nav>
+      <!--Se llena de manera Dinamica-->
+      
+      
+    </nav>
+ </header>
+
+  <!-- Contenedor general -->
+    <section class="registro-section">
+        <div class="login-container">
+            <div class="login-image">
+              <img src="https://i.pinimg.com/736x/6d/0a/ea/6d0aea1b067591712b714b5fae296f72.jpg" alt="Donaciones HopeChain">
+              <div class="overlay"></div>
+              <div class="image-text" style="position: absolute; bottom: 20px; left: 20px; color: white; z-index: 2;">
+                  <h2>Bienvenido a <span>HopeChain</span></h2>
+                  <p>Conéctate, ayuda y transforma vidas.</p>
+              </div>
+            </div>
+
+            <div class="login-form">
+              <h1>Iniciar Sesión</h1>
+
+              <!-- Agregamos id="formLogin" -->
+              <form id="formLogin" action="#" method="POST">
+                <div class="input-group">
+                    <label for="correoLogin">Correo electrónico</label>
+                    <!-- Agregamos id="correoLogin" -->
+                    <input type="email" id="correoLogin" placeholder="ejemplo@tucorreo.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="contrasenaLogin">Contraseña</label>
+                    <!-- Agregamos id="contrasenaLogin" -->
+                    <input type="password" id="contrasenaLogin" placeholder="••••••••••" required>
+                </div>
+
+                <div class="helpers">
+                  <label><input type="checkbox" id="mostrarPassword"> Mostrar Contraseña</label>
+                </div>
+                
+                <button type="submit" class="btn-primary btn-registrar">Entrar</button>
+                
+                <!-- Contenedor para mensajes de error -->
+                <p id="mensajeErrorLogin" style="color: #dc3545; margin-top: 15px; display: none; font-size: 0.9rem; text-align: center;"></p>
+
+                <p class="signup-text">¿No tienes cuenta? <a href="Registro.html">Regístrate</a></p>
+              </form>
+            </div>
+        </div>
+    </section>
+  
+    <!-- FOOTER -->
+    <footer>
+      <p class="copy">© 2025 HopeChain</p>
+    </footer>
+
+  <script src="https://kit.fontawesome.com/a2d9d5f1a1.js" crossorigin="anonymous"></script>
+  
+ 
+  
+  <script src="/JS/login.js"></script>
+  <script src="/JS/header.js"></script>
+</body>
+</html>

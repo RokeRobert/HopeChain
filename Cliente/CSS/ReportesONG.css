@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f5f8fa;
+  color: #333;
+}
+
+
+
+/* CONTENIDO */
+.reportes-section {
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.reportes-section h2 {
+  text-align: center;
+  color: #008080;
+  margin-bottom: 30px;
+}
+
+/* FORMULARIO */
+.form-container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 30px;
+  margin-bottom: 40px;
+}
+
+.form-container h3 {
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.btn-registrar {
+  background-color: #008080;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-registrar:hover {
+  background-color: #006666;
+}
+
+/* LISTA DE REPORTES */
+.reportes-container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+
+.reporte-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  transition: transform 0.3s;
+}
+
+.reporte-card:hover {
+  transform: translateY(-3px);
+}
+
+.reporte-card h4 {
+  color: #008080;
+}
+
+.fecha {
+  color: gray;
+  font-size: 13px;
+  margin-top: 8px;
+}

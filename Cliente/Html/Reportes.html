@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reportes - HopeChain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/base.css">
+    <link rel="stylesheet" href="/CSS/Reportes.css"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="logo"><img src="/img/Logo/logo.png" alt="HopeChain Logo"></div>
+    <nav></nav>
+  </header>
+
+  <main class="reports-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h1>📊 Reportes de Transparencia</h1>
+        
+        <button onclick="exportarDashboardPDF()" class="btn-filtrar" style="background:#dc3545;">
+            <i class="fas fa-file-pdf"></i> Descargar Informe
+        </button>
+    </div>
+
+    <section class="filtros">
+        <label>Periodo:</label>
+        <select id="filtro-periodo">
+            <option value="anual">Último Año</option>
+            <option value="trimestral">Último Trimestre</option>
+        </select>
+        </section>
+    
+    <div id="contenido-pdf">
+        
+        <section class="metricas-clave">
+            <div class="tarjeta">
+                <h3>Total Recaudado</h3>
+                <p id="total-donado-global" class="monto-largo">Cargando...</p>
+            </div>
+            <div class="tarjeta">
+                <h3>ONGs Participantes</h3>
+                <p id="ongs-activas" class="monto-largo">--</p>
+            </div>
+            <div class="tarjeta">
+                <h3>Transacciones</h3>
+                <p id="donaciones-count-global" class="monto-largo">--</p>
+                <div style="display:flex; justify-content:center; gap:15px; margin-top:10px; font-size:0.85em; color:#666;">
+                    <span><i class="fas fa-circle" style="color:#007bff; font-size:8px;"></i> <span id="tx-directas">0</span> Gral.</span>
+                    <span><i class="fas fa-circle" style="color:#28a745; font-size:8px;"></i> <span id="tx-campanas">0</span> Camp.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="visualizaciones-data">
+            <div class="grafico-caja">
+                <h4>Distribución por Sector</h4>
+                <div style="height:300px; width:100%; position: relative;">
+                    <canvas id="grafico-sectores"></canvas>
+                </div>
+            </div>
+            <div class="grafico-caja">
+                <h4>Tendencia de Donaciones</h4>
+                <div style="height:300px; width:100%; position: relative;">
+                    <canvas id="grafico-tendencia"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="rendicion-cuentas">
+            <h3>Distribución de Fondos (Top ONGs)</h3>
+            <table id="tabla-gastos">
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Organización</th>
+                        <th style="width: 20%;">Recaudado</th>
+                        <th style="width: 40%;">Desglose</th>
+                        <th style="width: 10%;"></th>
+                    </tr>
+                </thead>
+                <tbody id="tablaTopOngs">
+                    <tr><td colspan="4" style="text-align:center;">Cargando...</td></tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+  </main>
+
+  <div id="modalHistorial" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:2000;">
+      <div style="background:white; width:90%; max-width:700px; border-radius:10px; padding:25px; max-height:90vh; overflow-y:auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+              <h2 id="modalTituloOng" style="margin:0; font-size:1.5rem; color:#333;">Historial</h2>
+              <button onclick="document.getElementById('modalHistorial').style.display='none'" style="background:#007bff; border:none; font-size:2rem; cursor:pointer;">&times;</button>
+          </div>
+          <div style="overflow-x:auto;">
+              <table style="width:100%; border-collapse:collapse; margin-bottom:20px; font-size:0.95em;">
+                  <thead>
+                      <tr style="background:#f8f9fa; border-bottom:2px solid #eee;">
+                          <th style="padding:10px; text-align:left;">Fecha</th>
+                          <th style="padding:10px; text-align:left;">Concepto</th>
+                          <th style="padding:10px; text-align:center;">Tipo</th>
+                          <th style="padding:10px; text-align:right;">Monto</th>
+                      </tr>
+                  </thead>
+                  <tbody id="tablaModalBody"></tbody>
+              </table>
+          </div>
+          <div style="text-align:right; border-top:1px solid #eee; padding-top:15px;">
+              <button onclick="descargarReportePDF()" class="btn-ver-detalle" style="background:#dc3545; color:white; border-color:#dc3545;">
+                  <i class="fas fa-file-pdf"></i> PDF
+              </button>
+          </div>
+      </div>
+  </div>
+  <!-- MODAL CONFIRMAR CERRAR SESIÓN -->
+<div id="modalCerrarSesion" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.4); backdrop-filter:blur(4px);
+            justify-content:center; align-items:center; z-index:9999;">
+    
+    <div style="background:white; padding:25px; width:300px; border-radius:12px;
+                text-align:center; box-shadow:0 5px 20px rgba(0,0,0,0.15);">
+        
+        <h3 style="margin-bottom:10px;">¿Cerrar sesión?</h3>
+        <p style="margin-bottom:20px; color:#555;">Tu sesión se cerrará por completo.</p>
+
+        <button onclick="confirmarCerrarSesion()" 
+                style="background:#dc3545; color:white; padding:8px 20px; border:none; 
+                border-radius:8px; cursor:pointer; margin-right:10px;">
+            Sí, salir
+        </button>
+
+        <button onclick="cancelarCerrarSesion()" 
+                style="background:#ccc; padding:8px 20px; border:none; border-radius:8px; cursor:pointer;">
+            Cancelar
+        </button>
+    </div>
+</div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  
+  <script src="/JS/Reportes.js"></script>
+  <script src="/JS/header.js"></script>
+</body>
+</html>

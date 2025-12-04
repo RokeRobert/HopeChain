@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración - HopeChain</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/base.css">
+    <link rel="stylesheet" href="/CSS/PanelAdmin.css">
+</head>
+<body>
+
+    <header>
+    <div class="logo">
+                <img src="/img/Logo/logo.png" alt="HopeChain Logo">
+    </div>
+    <nav>
+        </nav>
+</header>
+
+    <div class="admin-container">
+        
+        <div class="admin-header">
+            <h1><i class="fas fa-user-shield"></i> Panel de Administración</h1>
+            <p>Gestiona las solicitudes de ingreso de nuevas Organizaciones.</p>
+        </div>
+
+        <div class="card-admin">
+            <h3>Solicitudes Pendientes</h3>
+            
+            <div class="table-responsive">
+                <table class="table-requests" id="tablaPendientes">
+                    <thead>
+                        <tr>
+                            <th>Logo</th>
+                            <th>Organización</th>
+                            <th>RFC</th>
+                            <th>Documentación</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td colspan="5" class="text-center">Cargando solicitudes...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <!-- MODAL CONFIRMAR CERRAR SESIÓN -->
+<div id="modalCerrarSesion" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.4); backdrop-filter:blur(4px);
+            justify-content:center; align-items:center; z-index:9999;">
+    
+    <div style="background:white; padding:25px; width:300px; border-radius:12px;
+                text-align:center; box-shadow:0 5px 20px rgba(0,0,0,0.15);">
+        
+        <h3 style="margin-bottom:10px;">¿Cerrar sesión?</h3>
+        <p style="margin-bottom:20px; color:#555;">Tu sesión se cerrará por completo.</p>
+
+        <button onclick="confirmarCerrarSesion()" 
+                style="background:#dc3545; color:white; padding:8px 20px; border:none; 
+                border-radius:8px; cursor:pointer; margin-right:10px;">
+            Sí, salir
+        </button>
+
+        <button onclick="cancelarCerrarSesion()" 
+                style="background:#ccc; padding:8px 20px; border:none; border-radius:8px; cursor:pointer;">
+            Cancelar
+        </button>
+    </div>
+</div>
+
+
+    <script src="/JS/PanelAdmin.js"></script>
+    <script src="/JS/header.js"></script>
+    <script>
+        // Función rápida para cerrar sesión si se requiere
+        function logout() {
+            localStorage.removeItem('usuario');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>

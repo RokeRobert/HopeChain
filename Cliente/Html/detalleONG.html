@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle ONG - HopeChain</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/CSS/base.css">
+  <link rel="stylesheet" href="/CSS/detalleONG.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+        <img src="/img/Logo/logo.png" alt="HopeChain Logo">
+    </div>
+    <nav></nav>
+  </header>
+
+  <div class="main-container">
+      
+    <div class="hero-section">
+        <div class="ong-image" id="ong-image-container">
+            </div>
+        <div class="hero-text">
+            <h1 id="ong-name">Cargando...</h1>
+            <p id="ong-description">...</p>
+            <div id="ong-contact-info" style="margin-top: 15px; font-size: 0.9em; color: #555;">
+                </div>
+        </div>
+    </div>
+    
+    <div class="content-section">
+        <h2>Campañas Activas</h2>
+        <div class="cards-grid" id="campaigns-container">
+            <p>Cargando campañas...</p>
+        </div>
+    </div>
+
+    <div class="content-section" id="donation-section">
+        <h2 id="donations-title">Formas de Donar</h2>
+        <div class="cards-grid" id="donations-container">
+            </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Opiniones sobre esta ONG</h2>
+        
+        <div id="comentarios-ong-container" style="margin-bottom: 30px;">
+            <p style="color:#777;">Cargando opiniones...</p>
+        </div>
+        
+        <hr style="border:0; border-top:1px solid #eee; margin-bottom:20px;">
+
+        <div id="seccion-escribir-comentario">
+            
+            <div id="msgLoginComentario" style="text-align: center; padding: 20px; background:#f9f9f9; border-radius:8px; display: none;">
+                <p style="color: #555; margin-bottom: 10px;">¿Quieres opinar sobre esta organización?</p>
+                <a href="login.html" style="text-decoration:none; color:white; background:#007bff; padding:8px 20px; border-radius:5px; font-weight:600;">
+                    Inicia sesión para comentar
+                </a>
+            </div>
+
+            <div id="formComentarioWrapper" style="display: none; background:#fff; border:1px solid #eee; padding:20px; border-radius:10px;">
+                <h4 style="margin-top:0; color: #333;"><i class="fas fa-pen"></i> Deja tu opinión</h4>
+                
+                <form id="formComentarioOng">
+                    <div style="margin-bottom: 15px;">
+                        <label style="display:block; margin-bottom:5px; font-weight:600; color:#555;">Calificación:</label>
+                        <select id="ratingOng" style="padding: 8px; border-radius: 5px; border: 1px solid #ddd; width: 100%; max-width: 200px;">
+                            <option value="5">⭐⭐⭐⭐⭐ Excelente</option>
+                            <option value="4">⭐⭐⭐⭐ Muy Buena</option>
+                            <option value="3">⭐⭐⭐ Buena</option>
+                            <option value="2">⭐⭐ Regular</option>
+                            <option value="1">⭐ Mala</option>
+                        </select>
+                    </div>
+
+                    <div style="margin-bottom: 15px;">
+                        <label style="display:block; margin-bottom:5px; font-weight:600; color:#555;">Tu Comentario:</label>
+                        <textarea id="txtComentarioOng" rows="3" placeholder="Escribe tu experiencia con esta ONG..." 
+                                  style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-family: inherit; resize: vertical;" required></textarea>
+                    </div>
+
+                    <button type="submit" id="btnEnviarComentario" style="background:#28a745; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:600;">
+                        Publicar Opinión
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+  </div>
+
+  <div id="modalMonto" class="modal-monto" style="display:none;">
+      <div class="card-monto">
+          <h2 class="titulo-monto">💰 Monto a donar</h2>
+          <div class="input-group-monto">
+            <span>$</span>
+            <input type="number" id="montoPersonalizado" placeholder="Ej: 200" min="1">
+          </div>
+          <div class="acciones-monto">
+              <button id="cancelarMonto" class="btn-monto cancel">Cancelar</button>
+              <button id="confirmarMonto" class="btn-monto confirm">Continuar</button>
+          </div>
+      </div>
+  </div>
+
+  <div id="modalPago" class="modal" style="display:none;">
+    <div class="modal-card animate-pop">
+      <button id="cerrarModal" class="cerrar-modal">✕</button>
+      <div class="modal-header">
+        <h2>Completa tu donación</h2>
+      </div>
+      <div class="field">
+        <label>Número de tarjeta</label>
+        <input type="text" id="tarjeta" placeholder="0000 0000 0000 0000">
+      </div>
+      <div class="field">
+        <label>Nombre del titular</label>
+        <input type="text" id="titular" placeholder="Nombre completo">
+      </div>
+      <div class="row" style="display:flex; gap:10px;">
+        <div class="field small" style="flex:1;"><label>Exp</label><input type="text" placeholder="MM/YY"></div>
+        <div class="field small" style="flex:1;"><label>CVV</label><input type="password" placeholder="123"></div>
+      </div>
+      <button id="procesarPago" class="btn-pay">Procesar pago</button>
+    </div>
+  </div>
+
+  <div id="loaderOverlay" class="hidden" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:3000; justify-content:center; align-items:center;">
+    <div class="loader-box" style="background: white; padding: 20px; border-radius: 10px; text-align:center;">
+      <i class="fas fa-spinner fa-spin fa-2x" style="color:#007bff; margin-bottom:10px;"></i>
+      <p>Procesando pago...</p>
+    </div>
+  </div>
+
+  <div id="modalTicket" class="modal" style="display:none;">
+      <div class="ticket-card">
+          <button id="cerrarTicket" class="close-ticket">×</button>
+          <div class="ticket-header">
+              <h2>Donación Completada</h2>
+          </div>
+          <div id="ticketContent"></div>
+      </div>
+  </div>
+  <!-- MODAL CONFIRMAR CERRAR SESIÓN -->
+<div id="modalCerrarSesion" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.4); backdrop-filter:blur(4px);
+            justify-content:center; align-items:center; z-index:9999;">
+    
+    <div style="background:white; padding:25px; width:300px; border-radius:12px;
+                text-align:center; box-shadow:0 5px 20px rgba(0,0,0,0.15);">
+        
+        <h3 style="margin-bottom:10px;">¿Cerrar sesión?</h3>
+        <p style="margin-bottom:20px; color:#555;">Tu sesión se cerrará por completo.</p>
+
+        <button onclick="confirmarCerrarSesion()" 
+                style="background:#dc3545; color:white; padding:8px 20px; border:none; 
+                border-radius:8px; cursor:pointer; margin-right:10px;">
+            Sí, salir
+        </button>
+
+        <button onclick="cancelarCerrarSesion()" 
+                style="background:#ccc; padding:8px 20px; border:none; border-radius:8px; cursor:pointer;">
+            Cancelar
+        </button>
+    </div>
+</div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="/JS/detalleONG.js"></script>
+  <script src="/JS/header.js"></script>
+</body>
+</html>

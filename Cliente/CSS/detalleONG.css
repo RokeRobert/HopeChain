@@ -1,0 +1,782 @@
+/* Variables y Reset Básico */
+:root {
+    --primary-color: #007bff; /* Azul vibrante */
+    --secondary-color: #45c4b0; /* Verde esperanza */
+    --text-color: #343a40; /* Gris oscuro */
+    --light-bg: #f8f9fa; /* Fondo muy claro */
+    --white: #ffffff;
+    --border-radius: 10px;
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ------------------------------------------------ */
+/*                 ESTILOS BASE                     */
+/* ------------------------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f5f8fa;
+  color: #333;
+}
+
+
+
+/* ============================================================
+   🔹 CONTENEDOR PRINCIPAL
+   ============================================================ */
+.main-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+}
+
+
+/* ============================================================
+   🔹 SECCIÓN PRINCIPAL (HÉROE/ONG)
+   ============================================================ */
+.hero-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 0;
+    border-bottom: 1px solid #e9ecef;
+    margin-bottom: 30px;
+}
+
+/* Contenedor del Círculo */
+.ong-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;       /* Hace el círculo */
+    overflow: hidden;         /* <--- CLAVE: Recorta lo que sobresale */
+    border: 4px solid white;  /* Borde blanco estético */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: white;  /* Fondo por si la imagen es transparente */
+    
+    /* Centrar imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* La imagen dentro */
+.ong-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 'cover' rellena el círculo / 'contain' muestra todo el logo sin recortar */
+}
+
+
+
+.ong-logo-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.hero-text h1 {
+    font-size: 32px;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #6c757d;
+}
+
+
+/* ============================================================
+   🔹 SECCIONES DE CONTENIDO
+   ============================================================ */
+.content-section h2 {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+
+/* ============================================================
+   🔹 TARJETAS (Campañas y Donaciones)
+   ============================================================ */
+.card {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    border-top: 5px solid #f4b000;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.card p {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+
+/* ============================================================
+   🔹 IMÁGENES DE CAMPAÑAS
+   ============================================================ */
+.campaign-icon {
+    width: 100%;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 3px solid #e6f4f1;
+    margin-bottom: 15px;
+}
+
+
+/* ============================================================
+   🔹 GIFS DE DONACIÓN (tamaño corregido + sombra premium)
+   ============================================================ */
+.donation-gif,
+.card img[src*="Donacion"],
+.card img[src*="donacion"],
+.card img[src*=".gif"] {
+    width: 120px !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto 15px;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+}
+
+
+/* ============================================================
+   🔹 BOTONES PREMIUM (Ver más / Donar)
+   ============================================================ */
+.btn {
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.25s ease;
+}
+
+
+.btn-otro-monto {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+    padding: 12px 26px;
+    border: none;
+    border-radius: 12px;
+
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.btn-otro-monto:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.20);
+    filter: brightness(1.1);
+}
+
+.btn-otro-monto:active {
+    transform: scale(0.97);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* ============================================================
+   🔹 BOTÓN VOLVER A CAMPAÑAS
+   ============================================================ */
+.btnVolverCampanias {
+    background: #e7eef3 !important;
+    color: #333 !important;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    width: 30%;
+}
+
+.btnVolverCampanias:hover {
+    background: #d9e3ea !important;
+}
+
+/* ============================
+    MONTOS RAPIDOS
+============================= */
+.montos-rapidos {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+    justify-content: center;  
+}
+
+.btn-money {
+    padding: 10px 15px;
+    background: #f1f4ff;
+    border: 1px solid #cdd6ff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s;
+    font-weight: bold;
+}
+
+.btn-money:hover {
+    background: #4d7cff;
+    color: white;
+    transform: scale(1.05);
+}
+
+.btn-money.custom {
+    background: #ffe7be;
+    border-color: #ffc97a;
+}
+
+/* ============================
+    MODAL Monto Personalizado
+============================= */
+
+.modal-monto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+/* Tarjeta interna */
+.card-monto {
+  width: 350px;
+  background: rgba(255,255,255,0.15);
+  padding: 25px 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+  backdrop-filter: blur(12px);
+  animation: fadeIn 0.35s ease-out;
+  border: 1px solid rgba(255,255,255,0.3);
+  text-align: center;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Título y texto */
+.titulo-monto {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.texto-monto {
+  font-size: 15px;
+  color: #f1f1f1;
+  margin-bottom: 20px;
+}
+
+/* Input $ + campo */
+.input-group-monto {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.2);
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+  margin-bottom: 10px;
+}
+
+.input-group-monto span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-right: 6px;
+}
+
+.input-group-monto input {
+  width: 100%;
+  padding: 8px;
+  font-size: 17px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+}
+
+.input-group-monto input::placeholder {
+  color: #e8e8e8;
+}
+
+/* Error */
+.error-monto {
+  display: block;
+  color: #ff8080;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* Botones */
+.acciones-monto {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.btn-monto {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.25s ease;
+}
+
+.btn-monto.cancel {
+  background: #ffffff30;
+  color: #fff;
+  border: 1px solid #ffffff70;
+}
+
+.btn-monto.cancel:hover {
+  background: #ffffff50;
+}
+
+.btn-monto.confirm {
+  background: linear-gradient(90deg,#00d2ff,#3a7bd5);
+  color: white;
+}
+
+.btn-monto.confirm:hover {
+  opacity: 0.85;
+}
+
+
+/* ============================================================
+   🔹 MODAL
+   ============================================================ */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    width: 380px;
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    position: relative;
+    animation: aparecer 0.2s ease-out;
+}
+
+@keyframes aparecer {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-content h2 {
+    text-align: center;
+    color: #0e4a6f;
+}
+
+.modal-content label {
+    font-weight: 600;
+    margin-top: 10px;
+    display: block;
+    color: #0e4a6f;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid #d5d5d5;
+    font-size: 14px;
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+}
+
+
+/* ============================================================
+   🔹 RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 28px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/*---------MODAL de PAGO--------*/
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cerrar-modal {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+
+  background: transparent;
+  border: none;
+
+  font-size: 20px;
+  cursor: pointer;
+
+    width: 45px;         /* ← limita el área del hover */
+    height: 45px;        /* ← idem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.cerrar-modal:hover {
+  background: #2c82f6;  /* un hover suave */
+}
+
+
+/* Tarjeta */
+.modal-card {
+  width: 380px;
+  padding: 25px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+.animate-pop {
+  animation: popIn 0.35s ease;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Encabezado con bancos */
+.modal-header {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.brands img {
+  width: 45px;
+  margin: 0 5px;
+  filter: brightness(0) invert(1);
+}
+
+/* Inputs */
+.field { position: relative; /* <--- IMPORTANTE */}
+
+label { font-size: 14px; margin-bottom: 4px; display: block; }
+
+/* Input con ícono */
+.card-input {
+  position: relative;
+}
+
+.card-icon {
+  position: absolute;
+  right: 10px;
+  top: 9px;
+  width: 32px;
+  display: none;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255,255,255,0.9);
+}
+
+/* Botón procesar */
+.btn-pay {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: linear-gradient(90deg,#00d2ff,#3a7bd5);
+  border: none;
+  border-radius: 12px;
+  font-size: 17px;
+  color: white;
+  cursor: pointer;
+  transition: 0.25s;
+}
+.btn-pay:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Loader overlay que cubre toda la pantalla */
+#loaderOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+
+.hidden { display: none !important; }
+
+.loader-box {
+  text-align: center;
+  padding: 18px 22px;
+  border-radius: 12px;
+}
+
+.loader-circle {
+  width: 62px;
+  height: 62px;
+  border: 6px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+.cvv-btn {
+  position: absolute;
+  right: 10px;
+  top: 70%;
+  transform: translateY(-50%);
+  color: #2c82f6;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  
+  width: 30px;         /* ← limita el área del hover */
+    height: 30px;        /* ← idem */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cvv-btn:hover {
+  background: #2c82f6;  /* un hover suave */
+  color: white;
+}
+
+
+
+@keyframes progressMove {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* Errores */
+.error {
+  color: #ff8f8f;
+  font-size: 12px;
+}
+
+.active-money {
+  background: #007bff;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #007bff55;
+}
+
+/* ===== MODAL TICKET ===== */
+
+#modalTicket {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(6px);
+    z-index: 999999;
+}
+
+.ticket-card {
+    width: 380px;
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: showUp 0.25s ease;
+    position: relative;
+}
+
+.close-ticket {
+    position: absolute;
+    top: 10px; right: 14px;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #777;
+    transition: .2s;
+}
+
+.close-ticket:hover {
+    color: #111;
+}
+
+@keyframes showUp {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Diseño del ticket */
+.ticket-card h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.ticket-info {
+    background: #f8f9ff;
+    border-left: 5px solid #4d7cff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.ticket-info p {
+    margin: 6px 0;
+    font-size: 14px;
+}
+/* Encabezado */
+.ticket-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.ticket-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #222;
+}
+
+.success-icon {
+    font-size: 50px;
+    color: #27c281;
+    margin-bottom: 8px;
+}
+
+#btnDescargarPDF {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    background: #4d7cff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+#btnDescargarPDF:hover {
+    background: #345ae0;
+}
+
+
+
+/* Este selector aplica los estilos a la imagen dentro de la tarjeta de campaña */
+.cards-grid .card img {
+    /* Rellena el ancho de la tarjeta */
+    width: 40% !important; /* Asegura que ocupa todo el ancho de la tarjeta */
+    /* Evita que se recorte, pero ya no es necesario si el height es auto */
+    object-fit: contain; 
+    height: auto !important;      /* La altura se adapta a la proporción natural */
+    max-height: 250px;            /* Límite de altura */
+    /* Resetea el margen para que no haya espacios extra */
+    display: block; 
+    margin: 0 auto 15px; 
+    border-radius: 8px; /* borde */
+}

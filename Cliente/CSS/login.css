@@ -1,0 +1,204 @@
+/* ----------- ESTILOS BASE ----------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ----------- BODY ----------- */
+body.login-body {
+background: linear-gradient(to right, #d2e6ff, #d3f6f7);
+  overflow-x: hidden;
+  position: relative;
+}
+
+.form-container {
+  position: relative;
+  z-index: 1; /* para que quede encima del fondo */
+}
+
+
+
+
+/* ----------- LOGIN SECTION ----------- */
+.registro-section {
+  flex: 1; /* ocupa todo el espacio disponible entre header y footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 20px 80px; /* espacio superior evita que se tape con el header */
+}
+
+/* ----------- CONTENEDOR LOGIN ----------- */
+.login-container {
+  display: flex;
+  background: rgba(255, 255, 255, 0.736);
+  backdrop-filter: blur(18px);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  max-width: 800px;
+  width: 100%;
+  height: 500px;
+  color: #fff;
+}
+
+/* ----------- IMAGEN LATERAL ----------- */
+.login-image {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+.login-image .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(152, 191, 243, 0.4), rgba(10, 10, 10, 0.5));
+}
+
+.login-image h2 span {
+  color: #f4b000;
+}
+
+/* ----------- FORMULARIO ----------- */
+.login-form {
+  flex: 1;
+  padding: 60px 50px;
+  background: rgb(255, 254, 254);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-form h1 {
+  color: #2c82f6;
+  font-size: 2rem;
+  margin-bottom: 25px;
+}
+
+
+/* ----------- CAMPOS DE ENTRADA ----------- */
+.input-group { 
+    margin-bottom: 20px; 
+}
+.input-group label { 
+    display: block; 
+    color: #333; 
+    font-weight: 500; 
+    margin-bottom: 5px; 
+    text-align: left;
+}
+.input-group input {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.input-group input:focus {
+  border-color: #2c82f6; box-shadow: 0 0 0 3px rgba(44,130,246,0.2);
+  outline: none;
+}
+
+/*---------------------------------------------------*/
+.helpers {
+  display: flex;
+  justify-content: flex-end; /* ← Mueve todo el contenido a la derecha */
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.helpers label { 
+    color: #666; 
+    font-size: 0.9rem; }
+.helpers a { 
+    color: #2c82f6; 
+    font-size: 0.9rem; 
+    text-decoration: none; }
+.helpers a:hover { 
+    text-decoration: underline; }
+
+    /* ----------- BOTÓN DE LOGIN ----------- */
+.btn-primary {
+  width: 50%;
+  padding: 12px 25px;
+  background: #f4b000;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.btn-primary:hover {
+  background: #ffc933; transform: translateY(-2px);
+}
+
+/*-------------------------------------*/
+.signup-text { text-align: center; margin-top: 20px; color: #666; }
+.signup-text a { color: #2c82f6; text-decoration: none; font-weight: 500; }
+.signup-text a:hover { text-decoration: underline; }
+
+/* ----------- RESPONSIVO ----------- */
+@media (max-width: 850px) {
+  .login-container {
+    flex-direction: column;
+  }
+  .login-image {
+    height: 250px;
+  }
+  .login-form {
+    padding: 40px 25px;
+  }
+}
+
+/* ----------- FOOTER ----------- */
+footer {
+  background-color: #1b1f24;
+  color: #ccc;
+  padding: 60px 40px 30px;
+  margin-top: 40px;
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-content h4 {
+  color: #f4b000;
+  margin-bottom: 15px;
+}
+
+.footer-content a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  color: #fff;
+}
+
+.copy {
+  text-align: center;
+  font-size: 0.9rem;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}

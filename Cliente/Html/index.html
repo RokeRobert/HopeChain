@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HopeChain - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/CSS/base.css">
+  <link rel="stylesheet" href="/CSS/Home2.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+        <img src="/img/Logo/logo.png" alt="HopeChain Logo">
+    </div>
+    <nav>
+      </nav>
+  </header>
+
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-text">
+      <h1>Apoya con confianza, dona con transparencia</h1>
+      <p>Conecta con organizaciones verificadas y sigue el impacto de tus donaciones de forma clara y segura.</p>
+      <button class="btn-acento" onclick="location.href='ONGs.html'">Explorar ONGs</button>
+    </div>
+
+    <div class="donate-overlay">
+        <div class="donate-container">
+          <div class="donate-left">
+            <h2>Construyamos juntos un<span> futuro</span> mejor</h2>
+            <p>Gracias a tu donativo podemos continuar brindando apoyo y esperanza.</p>
+          </div>
+
+          <div class="donate-right">
+            <div class="donate-buttons">
+              <button class="btn-money" data-val="15">$15</button>
+              <button class="btn-money" data-val="25">$25</button>
+              <button class="btn-money" data-val="50">$50</button>
+              <button class="btn-money" data-val="150">$150</button>
+              <button class="btn-money" data-val="200">$200</button>
+            </div>
+
+            <div class="input-group">
+              <input type="text" id="ingrMoney" placeholder="Otra cantidad...">
+              <button id="btnDonar" class="btn-acento">Donar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <div id="modalPago" class="modal">
+    <div class="modal-card animate-pop">
+      <button id="cerrarModal" class="cerrar-modal">✕</button>
+
+        <div class="modal-header">
+          <h2>Completa tu donación</h2>
+          <div class="brands">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Número de tarjeta</label>
+          <div class="card-input">
+            <input type="text" id="tarjeta" maxlength="19" placeholder="1234 5678 1234 5678">
+            <img id="tarjetaIcon" class="card-icon" src="" alt="" style="display:none;">
+          </div>
+          <small id="errTarjeta" class="error"></small>
+        </div>
+
+        <div class="field">
+          <label>Nombre del titular</label>
+          <input type="text" id="titular" placeholder="Como aparece en la tarjeta">
+          <small id="errTitular" class="error"></small>
+        </div>
+
+        <div class="row">
+          <div class="field small">
+            <label>Expiración</label>
+            <input type="text" id="cardExp" maxlength="5" placeholder="MM/YY">
+          </div>
+
+          <div class="field small">
+            <label>CVV</label>
+            <input type="password" id="cvv" maxlength="3" placeholder="CVV">
+          </div>
+        </div>
+
+        <button id="procesarPago" class="btn-pay">Procesar pago</button>
+    </div>
+  </div>
+
+  <div id="loaderOverlay" class="hidden">
+    <div class="loader-box">
+      <div class="loader-circle"></div>
+      <p style="color:white; margin-top:10px;">Procesando pago...</p>
+      <div style="width:260px; margin-top:12px; background: rgba(255,255,255,0.2); border-radius:6px; overflow:hidden;">
+        <div id="loaderProgress" style="width:0%; height:6px; background:#00d2ff; transition:width 3s ease;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modalTicket" class="modal" style="display:none;">
+      <div class="ticket-card">
+          <button id="cerrarTicket" class="close-ticket">×</button>
+          <div class="ticket-header">
+              <div class="success-icon">✔</div>
+              <h2>Donación Completada</h2>
+          </div>
+          <div id="ticketContent"></div>
+      </div>
+  </div>
+
+  <section class="why-donate">
+    <div class="why-image">
+      <img src="https://i.pinimg.com/1200x/99/3e/c2/993ec269dd60f7a080010e424381f2fe.jpg" alt="Por qué donar">
+    </div>
+    <div class="why-text">
+      <h2>¿Por qué donar con <span>HopeChain</span>?</h2>
+      <p>Creemos que cada donación debe generar impacto real y verificable.</p>
+      <ul>
+        <li><strong>Transparencia total:</strong> Reportes claros y públicos.</li>
+        <li><strong>Confianza garantizada:</strong> ONGs verificadas.</li>
+        <li><strong>Impacto medible:</strong> Conoce los resultados.</li>
+      </ul>
+      <button class="btn-acento" onclick="location.href='Registro.html'">Únete a HopeChain</button>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>Nuestros Pilares</h2>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="icon"><i class="fas fa-search-dollar fa-2x" style="color:#2c82f6;"></i></div>
+        <div class="content"><h3>Transparencia</h3><p>Reportes claros sobre el uso de fondos.</p></div>
+      </div>
+      <div class="feature">
+        <div class="icon"><i class="fas fa-hand-holding-heart fa-2x" style="color:#2c82f6;"></i></div>
+        <div class="content"><h3>Confianza</h3><p>Validación estricta de organizaciones.</p></div>
+      </div>
+      <div class="feature">
+        <div class="icon"><i class="fas fa-users fa-2x" style="color:#2c82f6;"></i></div>
+        <div class="content"><h3>Comunidad</h3><p>Unimos ciudadanos con causas reales.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <h2>Impacto del Sistema</h2>
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-border"></div>
+        <div class="inner-circle"><span id="totalONG">0</span><p>ONGs registradas</p></div>
+      </div>
+      <div class="stat">
+        <div class="stat-border"></div>
+        <div class="inner-circle"><span id="totalDonaciones">0</span><p>Donaciones realizadas</p></div>
+      </div>
+      <div class="stat">
+        <div class="stat-border"></div>
+        <div class="inner-circle"><span id="paises">0</span><p>Países participantes</p></div>
+      </div>
+        <div class="stat">
+          <div class="stat-border"></div>
+          <div class="inner-circle"><span id="reportes">0</span><p>Campañas Activas</p> </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="campaigns">
+    <h2>Campañas Destacadas</h2>
+    <div class="campaigns-carousel">
+      <button class="carousel-btn prev">&#10094;</button>
+      <div class="carousel-track" id="campaignsContainer"></div>
+      <button class="carousel-btn next">&#10095;</button>
+    </div>
+  </section>
+
+  <div class="linea-divisoria"></div>
+  <section class="testimonials">
+    <h2>Lo que dicen nuestros usuarios</h2>
+    <p class="subtitle">Es la experiencia de nuestros donantes lo que nos impulsa a seguir ayudando.</p>
+
+    <div class="testimonial-cards" id="testimonialsContainer">
+        </div>
+
+    <div class="comment-section">
+      <div class="comment-form-container">
+        
+        <div id="mensajeLoginComentario" style="text-align: center; padding: 20px; display: none;">
+            <p>¿Quieres compartir tu experiencia?</p>
+            <button onclick="location.href='login.html'" class="btn-acento">Inicia sesión para comentar</button>
+        </div>
+
+        <div id="formComentarioContainer" style="display: none;">
+            <h3>¿Tienes algo que compartir?</h3>
+            <p>Tu opinión es importante para nosotros.</p>
+            
+            <form class="comment-form" id="formComentarioPlataforma">
+                <p style="margin-bottom: 10px; color: #666;">
+                    Publicando como: <strong id="nombreComentador">Usuario</strong>
+                </p>
+
+                <textarea id="txtComentario" placeholder="Escribe tu comentario aquí..." rows="4" required></textarea>
+                
+                <div class="form-row">
+                    <select id="selValoracion" required>
+                        <option value="">Calificación ⭐</option>
+                        <option value="5">⭐⭐⭐⭐⭐ (Excelente)</option>
+                        <option value="4">⭐⭐⭐⭐ (Muy Bueno)</option>
+                        <option value="3">⭐⭐⭐ (Bueno)</option>
+                        <option value="2">⭐⭐ (Regular)</option>
+                        <option value="1">⭐ (Malo)</option>
+                    </select>
+                    <button type="submit" id="btnEnviarComentario">Enviar comentario</button>
+                </div>
+            </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div><h4>Sobre Nosotros</h4><p>Promovemos la transparencia y confianza.</p></div>
+      <div><h4>Enlaces Rápidos</h4><ul><li><a href="Home2.html">Inicio</a></li><li><a href="ONGs.html">ONGs</a></li></ul></div>
+      <div><h4>Contacto</h4><p>📧 contacto@hopechain.org</p></div>
+    </div>
+    <p class="copy">© 2025 HopeChain. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="/JS/Home2.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="/JS/header.js"></script>
+
+<!-- MODAL CONFIRMAR CERRAR SESIÓN -->
+<div id="modalCerrarSesion" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.4); backdrop-filter:blur(4px);
+            justify-content:center; align-items:center; z-index:9999;">
+    
+    <div style="background:white; padding:25px; width:300px; border-radius:12px;
+                text-align:center; box-shadow:0 5px 20px rgba(0,0,0,0.15);">
+        
+        <h3 style="margin-bottom:10px;">¿Cerrar sesión?</h3>
+        <p style="margin-bottom:20px; color:#555;">Tu sesión se cerrará por completo.</p>
+
+        <button onclick="confirmarCerrarSesion()" 
+                style="background:#dc3545; color:white; padding:8px 20px; border:none; 
+                border-radius:8px; cursor:pointer; margin-right:10px;">
+            Sí, salir
+        </button>
+
+        <button onclick="cancelarCerrarSesion()" 
+                style="background:#ccc; padding:8px 20px; border:none; border-radius:8px; cursor:pointer;">
+            Cancelar
+        </button>
+    </div>
+</div>
+
+
+</body>
+</html>

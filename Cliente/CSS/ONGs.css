@@ -1,0 +1,195 @@
+/* ----------- ESTILOS BASE ----------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #f5f8fa;
+  color: #333;
+}
+
+
+
+.ongs-section {
+  text-align: center;
+  padding: 70px 20px;
+  background: #f8fafc;
+}
+
+.ongs-section h2 {
+  font-size: 2rem;
+  color: #1a4dbd;
+  margin-bottom: 30px;
+}
+
+/* Filtros */
+.filter-buttons {
+  margin-bottom: 40px;
+}
+
+.filter-btn {
+  background: white;
+  border: 1.5px solid #1a4dbd;
+  color: #1a4dbd;
+  border-radius: 25px;
+  padding: 8px 18px;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.filter-btn:hover {
+  background: #1a4dbd;
+  color: white;
+}
+
+.filter-btn.active {
+  background: #1a4dbd;
+  color: white;
+}
+
+/* Tarjetas */
+
+
+.ongs-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  justify-content: center;
+  gap: 25px;
+  align-items: start;
+}
+
+.sin-resultados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 300px; /* Puedes ajustar el alto */
+    width: 100%;
+
+    text-align: center;
+    color: #666;
+    font-size: 1.1rem;
+    gap: 10px;
+}
+
+.sin-resultados i {
+    font-size: 40px;
+    color: #aaa;
+}
+
+.ong-card {
+  width: 300px;          /* ← FIJA EL ANCHO Y SE ARREGLA EL GRID */
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  overflow: hidden;
+  transition: all 0.4s ease;
+  opacity: 1;
+  transform: scale(1);
+  margin: 0;
+}
+
+
+.ong-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.ong-card h3 {
+  color: #1a4dbd;
+  margin: 15px 0 5px;
+}
+
+.ong-card p {
+  padding: 0 15px 20px;
+  color: #444;
+  font-size: 0.95rem;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;   /* ← máximo 3 líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ong-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Animación suave al filtrar */
+.ong-card.hide {
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+ /* ===== Buscador ===== */
+        #buscarOng {
+            width: 100%;
+            max-width: 400px;
+            display: block;
+            margin: 20px auto;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        /* ===== Etiquetas ===== */
+        .tags {
+            margin: 8px 0;
+        }
+
+        .tag {
+            background-color: #e0f0ff;
+            color: #0077cc;
+            font-size: 12px;
+            padding: 3px 7px;
+            border-radius: 5px;
+            margin: 0 3px 3px 0;
+            display: inline-block;
+        }
+
+        /* ===== Valoración ===== */
+        .rating {
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #ffb400;
+        }
+
+        /* Ocultar tarjetas filtradas */
+        .hide {
+            display: none;
+        }
+
+        /* ===== Ver más ===== */
+        .btn-vermas {
+            display: inline-block;
+            padding: 8px 18px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #fff;
+            background: #2c82f6;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            margin-top: 5px;
+            transform: translateY(-5px);            
+          }
+
+          .btn-vermas:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+          }

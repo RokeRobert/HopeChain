@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro ONG - HopeChain</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/CSS/Registro.css"> 
+  <link rel="stylesheet" href="/CSS/RegistroONG.css"> 
+  <link rel="stylesheet" href="/CSS/base.css"> 
+</head>
+<body class="registro-body">
+
+  <header>
+    <div class="logo"><img src="/img/Logo/logo.png" alt="HopeChain Logo"></div>
+    <nav>
+      <!--Se llena de manera Dinamica-->
+    </nav>
+  </header>
+
+  <section class="registro-section">
+    <div class="registro-box wide-box">
+      
+      <div class="form-box full-width">
+        <h2>Registro de Colaborador ONG</h2>
+        <p>Gestiona tus campañas y transparencia. Completa los datos a continuación.</p>
+
+        <form id="formRegistroONG">
+
+          <h3 class="section-title">1. Tus Datos de Acceso</h3>
+          <div class="row">
+            <div class="input-group">
+              <label>Nombre(s)</label>
+              <input type="text" id="uNombre" required>
+            </div>
+            <div class="input-group">
+                <label>Apellido Paterno</label>
+                <input type="text" id="uApellidoPaterno" required>
+            </div>
+            <div class="input-group">
+                <label>Apellido Materno</label>
+                <input type="text" id="uApellidoMaterno" required>
+            </div>
+          </div>
+          <div class="input-group">
+            <label>Correo Electrónico Personal</label>
+            <input type="email" id="uCorreo" required>
+          </div>
+          <div class="row">
+            <div class="input-group">
+                <label>Contraseña</label>
+                <input type="password" id="uPass" minlength="6" required>
+            </div>
+            <div class="input-group">
+                <label>Confirmar</label>
+                <input type="password" id="uPassConfirm" required>
+            </div>
+          </div>
+
+          <hr class="divider">
+
+          <h3 class="section-title">2. Asociación con la Organización</h3>
+          
+          <div class="mode-selector">
+            <label class="radio-card">
+              <input type="radio" name="modoOng" value="existente" checked onchange="toggleModo()">
+              <div class="card-content">
+                <strong>Unirme a una existente</strong>
+                <span>Mi ONG ya está registrada en HopeChain.</span>
+              </div>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="modoOng" value="nueva" onchange="toggleModo()">
+              <div class="card-content">
+                <strong>Registrar nueva ONG</strong>
+                <span>Quiero dar de alta una nueva organización.</span>
+              </div>
+            </label>
+          </div>
+
+          <div id="bloque-existente" class="bloque-opcion">
+            <div class="input-group">
+              <label>Selecciona la Organización</label>
+              <select id="selectOngExistente">
+                <option value="">Cargando lista...</option>
+                </select>
+            </div>
+            <p class="info-text">⚠️ Tu cuenta quedará pendiente de aprobación por los administradores actuales de esa ONG.</p>
+          </div>
+
+          <div id="bloque-nueva" class="bloque-opcion hidden">
+            <h4 style="margin-bottom:15px; color:#2c82f6;">Datos Institucionales</h4>
+            
+            <div class="input-group">
+                <label>Nombre de la ONG</label>
+                <input type="text" id="oNombre" placeholder="Ej. Fundación Esperanza">
+            </div>
+            
+            <div class="input-group">
+                <label>Descripción / Misión</label>
+                <textarea id="oDesc" rows="3"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label>RFC / Registro Fiscal</label>
+                    <input type="text" id="oRFC">
+                </div>
+                <div class="input-group">
+                    <label>Sitio Web</label>
+                    <input type="url" id="oWeb" placeholder="https://...">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-group">
+                    <label>Sector</label>
+                    <select id="oSector">
+                        <option value="">Cargando sectores...</option>
+                        </select>
+                </div>
+                <div class="input-group">
+                    <label>País</label>
+                    <select id="oPais">
+                        <option value="">Cargando países...</option>
+                         </select>
+                </div>
+            </div>
+
+            <h4 style="margin-top:20px; color:#2c82f6;">Contacto Institucional (Público)</h4>
+            <div class="row">
+                <div class="input-group"><label>Nombre Contacto</label><input type="text" id="cNombre"></div>
+                <div class="input-group"><label>Teléfono</label><input type="tel" id="cTel"></div>
+            </div>
+            <div class="input-group"><label>Correo Público</label><input type="email" id="cCorreo"></div>
+
+            <h4 style="margin-top:20px; color:#2c82f6;">Documentación</h4>
+            <div class="row">
+                <div class="input-group">
+                    <label>Logo (Imagen)</label>
+                    <input type="file" id="fileLogo" accept="image/*">
+                </div>
+                <div class="input-group">
+                    <label>Comprobante Legal (PDF/Imagen)</label>
+                    <input type="file" id="fileComprobante" accept=".pdf,.jpg,.png">
+                    <small style="color:#666;">Documento que avale la legalidad.</small>
+                </div>
+            </div>
+
+            <div class="alert-box">
+                ℹ️ Al registrar una nueva ONG, el estatus será <strong>PENDIENTE</strong> hasta que un administrador de HopeChain verifique la documentación.
+            </div>
+          </div>
+
+          <button type="submit" class="btn-acento btn-registrar" style="width: 100%; margin-top: 30px;">Finalizar Registro</button>
+          
+          <p class="error-msg" id="mensajeError" style="display:none; color:red; margin-top:10px; font-weight: bold; text-align: center;"></p>
+
+        </form>
+      </div>
+    </div>
+  </section>
+<!-- MODAL CONFIRMAR CERRAR SESIÓN -->
+<div id="modalCerrarSesion" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.4); backdrop-filter:blur(4px);
+            justify-content:center; align-items:center; z-index:9999;">
+    
+    <div style="background:white; padding:25px; width:300px; border-radius:12px;
+                text-align:center; box-shadow:0 5px 20px rgba(0,0,0,0.15);">
+        
+        <h3 style="margin-bottom:10px;">¿Cerrar sesión?</h3>
+        <p style="margin-bottom:20px; color:#555;">Tu sesión se cerrará por completo.</p>
+
+        <button onclick="confirmarCerrarSesion()" 
+                style="background:#dc3545; color:white; padding:8px 20px; border:none; 
+                border-radius:8px; cursor:pointer; margin-right:10px;">
+            Sí, salir
+        </button>
+
+        <button onclick="cancelarCerrarSesion()" 
+                style="background:#ccc; padding:8px 20px; border:none; border-radius:8px; cursor:pointer;">
+            Cancelar
+        </button>
+    </div>
+</div>
+
+
+  <script src="/JS/RegistroONG.js"></script> 
+  <script src="/JS/header.js"></script> 
+</body>
+</html>
