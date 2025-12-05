@@ -44,52 +44,58 @@ public async Task<IActionResult> GetStats()
     }
 }
 
-        // 2. CAMPAÑAS DESTACADAS
-        [HttpGet("campanas-destacadas")]
-        public async Task<IActionResult> GetDestacadas()
+        // 2. CAMPAÑAS DESTACADAS (Versión Final: Con Imágenes y Redirección ONG)
+[HttpGet("campanas-destacadas")]
+public async Task<IActionResult> GetDestacadas()
+{
+    try 
+    {
+        // PASO 1: Traemos los datos base de la campaña
+        var campañasBase = await _context.Campanas
+            .OrderByDescending(c => c.Id)
+            .Take(6)
+            .Select(c => new 
+            {
+                c.Id,
+                c.Nombre, 
+                c.Descripcion,
+                c.OngId // <--- Fundamental para que funcione el botón "Ver detalles"
+            })
+            .ToListAsync();
+
+        var listaFinal = new List<object>();
+
+        // PASO 2: Buscamos la imagen para cada campaña encontrada
+        foreach(var c in campañasBase)
         {
-            try 
-            {
-                var campañasBase = await _context.Campanas
-                    .OrderByDescending(c => c.Id)
-                    .Take(6)
-                    .Select(c => new 
-                    {
-                        c.Id,
-                        // Aquí está la clave: Asignamos el nombre de la propiedad
-                        c.Nombre, 
-                        c.Descripcion
-                    })
+            var rutaImagen = "";
+            try {
+                // Tu lógica original para obtener la imagen desde la tabla "Imagenes_Campanas"
+                var resultado = await _context.Database
+                    .SqlQueryRaw<string>("SELECT TOP 1 Ruta FROM Imagenes_Campanas WHERE CampanaID = {0}", c.Id)
                     .ToListAsync();
-
-                var listaFinal = new List<object>();
-
-                foreach(var c in campañasBase)
-                {
-                    var rutaImagen = "";
-                    try {
-                        var resultado = await _context.Database
-                            .SqlQueryRaw<string>("SELECT TOP 1 Ruta FROM Imagenes_Campanas WHERE CampanaID = {0}", c.Id)
-                            .ToListAsync();
-                        
-                        rutaImagen = resultado.FirstOrDefault();
-                    } catch { }
-
-                    // ---> AQUÍ DEFINIMOS LOS NOMBRES QUE LEERÁ EL JS <---
-                    listaFinal.Add(new {
-                        id = c.Id,
-                        nombre = c.Nombre,  // JS leerá: camp.nombre
-                        descripcion = c.Descripcion, // JS leerá: camp.descripcion
-                        imagen = rutaImagen       // JS leerá: camp.imagen
-                    });
-                }
-
-                return Ok(listaFinal);
+                
+                rutaImagen = resultado.FirstOrDefault();
+            } catch { 
+                // Si falla la imagen, no detenemos el proceso, se queda vacía
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Error: " + ex.Message });
-            }
+
+            // PASO 3: Armamos el objeto final para el Frontend
+            listaFinal.Add(new {
+                id = c.Id,
+                ongId = c.OngId, // <--- ¡CORREGIDO! Aquí debe ser c.OngId (no c.Id)
+                nombre = c.Nombre,
+                descripcion = c.Descripcion,
+                imagen = rutaImagen // <--- Aquí va la imagen recuperada
+            });
         }
+
+        return Ok(listaFinal);
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, new { message = "Error: " + ex.Message });
+    }
+}
     }
 }

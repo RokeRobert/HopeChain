@@ -14,9 +14,9 @@ function actualizarHeader() {
     // 1. MENÚ BASE (Visible para TODOS: Invitados y Usuarios)
     // ===============================================
     let html = `
-        <a href="/Html/index.html">Inicio</a>
-        <a href="/Html/ONGs.html">ONGs</a>
-        <a href="/Html/Reportes.html">Reportes</a>
+        <a href="/Cliente/Html/index.html">Inicio</a>
+        <a href="/Cliente/Html/ONGs.html">ONGs</a>
+        <a href="/Cliente/Html/Reportes.html">Reportes</a>
     `;
 
     // ===============================================
@@ -28,7 +28,7 @@ function actualizarHeader() {
         // --- CASO A: ES UNA ONG ---
         if (usuario.tipo === 'ONG') {
             html += `
-                <a href="/Html/PanelONG.html" style="color:#2c82f6; font-weight:600;">
+                <a href="/Cliente/Html/PanelONG.html" style="color:#2c82f6; font-weight:600;">
                     <i class="fas fa-chart-line"></i> Mi Panel
                 </a>
             `;
@@ -37,7 +37,7 @@ function actualizarHeader() {
         // --- CASO B: ES ADMINISTRADOR (RolID = 2) ---
         else if (usuario.rolId === 2) { 
             html += `
-                <a href="/Html/PanelAdmin.html" style="color:#fd7e14; font-weight:600;">
+                <a href="/Cliente/Html/PanelAdmin.html" style="color:#fd7e14; font-weight:600;">
                     <i class="fas fa-user-shield"></i> Admin
                 </a>
             `;
@@ -46,7 +46,7 @@ function actualizarHeader() {
         // --- CASO C: ES DONANTE (Usuario Normal) ---
         else {
             html += `
-                <a href="/Html/MiCuenta.html" style="color:#2c82f6; font-weight:600;">
+                <a href="/Cliente/Html/MiCuenta.html" style="color:#2c82f6; font-weight:600;">
                     <i class="fas fa-user-circle"></i> Mi Cuenta
                 </a>
             `;
@@ -70,10 +70,10 @@ function actualizarHeader() {
         // 3. LÓGICA DE INVITADOS (NO LOGUEADOS)
         // ===============================================
         html += `
-            <a href="/Html/Contacto.html">Contacto</a>
+            <a href="/Cliente/Html/Contacto.html">Contacto</a>
             <div id="auth-buttons" style="display: inline-block; margin-left: 20px;">
-                <a href="/Html/login.html" class="btn-inicio-sesion">Iniciar sesión</a>
-                <a href="/Html/Registro.html" class="btn-registrarse">Registrarse</a>
+                <a href="/Cliente/Html/login.html" class="btn-inicio-sesion">Iniciar sesión</a>
+                <a href="/Cliente/Html/Registro.html" class="btn-registrarse">Registrarse</a>
             </div>
         `;
     }
@@ -88,7 +88,7 @@ window.cerrarSesionGlobal = function() {
 };
 window.confirmarCerrarSesion = function () {
     localStorage.removeItem("usuario");
-    window.location.href = "/Html/login.html";
+    window.location.href = "/Cliente/Html/login.html";
 };
 
 window.cancelarCerrarSesion = function () {

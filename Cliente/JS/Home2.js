@@ -1,5 +1,5 @@
 // ==========================================
-// CONFIGURACIÓN
+// CONFIGURACIÓN GLOBAL
 // ==========================================
 const SERVER_URL = 'http://localhost:5001'; 
 
@@ -17,14 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================================
 async function cargarEstadisticas() {
     try {
-        console.log("⏳ Solicitando estadísticas...");
         const res = await fetch(`${SERVER_URL}/api/home/stats`);
         
         if(res.ok) {
             const stats = await res.json();
-            console.log("✅ Datos recibidos:", stats);
-
-            // Forzamos la visualización inmediata para probar
+            
+            // Animamos los contadores
             actualizarContador('totalONG', stats.ongs);
             actualizarContador('totalDonaciones', stats.donaciones);
             actualizarContador('paises', stats.paises);
@@ -40,10 +38,7 @@ async function cargarEstadisticas() {
 
 function actualizarContador(id, valorFinal) {
     const elemento = document.getElementById(id);
-    if (!elemento) {
-        console.warn(`⚠️ No encontré el ID HTML: ${id}`);
-        return;
-    }
+    if (!elemento) return;
     
     // Si el valor es 0 o nulo, ponemos 0
     const target = valorFinal || 0;
@@ -64,7 +59,7 @@ function actualizarContador(id, valorFinal) {
 }
 
 // ==========================================
-// B. CARRUSEL CAMPAÑAS (Desde BD)
+// B. CARRUSEL CAMPAÑAS (Redirige a la ONG dueña)
 // ==========================================
 async function cargarCampanasCarrusel() {
     const track = document.getElementById('campaignsContainer');
@@ -89,14 +84,15 @@ async function cargarCampanasCarrusel() {
             }
 
             const div = document.createElement("div");
-            div.classList.add("campaign"); // ← IMPORTANTE
+            div.classList.add("campaign");
 
+            // --- CORRECCIÓN: Usamos camp.ongId en lugar de camp.id ---
             div.innerHTML = `
                 <img src="${imgUrl}" alt="${camp.nombre}">
                 <div class="campaign-info">
                     <h3>${camp.nombre}</h3>
                     <p>${camp.descripcion ? camp.descripcion.substring(0, 80) + '...' : 'Sin descripción.'}</p>
-                    <button class="btn-secundario">Ver Detalles</button>
+                    <button class="btn-secundario" onclick="verPerfilOng(${camp.ongId})">Ver Detalles</button>
                 </div>
             `;
 
@@ -110,7 +106,17 @@ async function cargarCampanasCarrusel() {
     }
 }
 
+// --- NUEVA FUNCIÓN DE REDIRECCIÓN ---
+function verPerfilOng(idOng) {
+    if(!idOng) {
+        console.error("No se recibió el ID de la ONG");
+        return;
+    }
+    // Redirige al perfil de la ONG dueña
+    window.location.href = `detalleONG.html?id=${idOng}`;
+}
 
+// (La función iniciarSlider se mantiene igual...)
 function iniciarSlider() {
     const track = document.querySelector('.carousel-track');
     const nextBtn = document.querySelector('.carousel-btn.next');
@@ -118,25 +124,21 @@ function iniciarSlider() {
     
     if(!track || !nextBtn || !track.firstElementChild) return;
 
-    // Ajuste CSS necesario para que funcione el scroll suave
     track.style.display = "flex";
-    track.style.overflowX = "auto"; // Habilitar scroll
-    track.style.scrollBehavior = "smooth"; // Animación suave
-    track.style.scrollbarWidth = "none"; // Ocultar barra scroll (Firefox)
+    track.style.overflowX = "auto"; 
+    track.style.scrollBehavior = "smooth"; 
+    track.style.scrollbarWidth = "none"; 
     
-    // Calcular ancho de tarjeta + margen (dinámicamente)
     const cardStyle = window.getComputedStyle(track.firstElementChild);
     const cardWidth = track.firstElementChild.offsetWidth + 
                       parseInt(cardStyle.marginRight) + 
                       parseInt(cardStyle.marginLeft);
 
     nextBtn.addEventListener('click', () => {
-        // Desplaza hacia la derecha un ancho de tarjeta
         track.scrollBy({ left: cardWidth, behavior: 'smooth' });
     });
 
     prevBtn.addEventListener('click', () => {
-        // Desplaza hacia la izquierda
         track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
     });
 }
@@ -153,11 +155,11 @@ function inicializarDonaciones() {
     const modalTicket = document.getElementById("modalTicket");
     let cantidad = 0;
 
-    // Selección de monto
+    // Selección de monto predefinido
     btnMoney.forEach(btn => {
         btn.addEventListener('click', () => {
-            btnMoney.forEach(b => b.classList.remove("active-money")); // Clase visual CSS
-            btn.style.background = "#e0f0ff"; // Feedback visual inline si falta CSS
+            btnMoney.forEach(b => b.classList.remove("active-money")); 
+            btn.style.background = "#e0f0ff"; 
             btn.style.borderColor = "#2c82f6";
             
             cantidad = parseInt(btn.dataset.val);
@@ -165,9 +167,15 @@ function inicializarDonaciones() {
         });
     });
 
+    // Entrada manual de monto
     if(ingrMoney) {
         ingrMoney.addEventListener('input', () => {
             cantidad = parseInt(ingrMoney.value) || 0;
+            // Limpiar selección de botones si escribe manual
+            btnMoney.forEach(b => {
+                b.style.background = ""; 
+                b.style.borderColor = "";
+            });
         });
     }
 
@@ -182,7 +190,7 @@ function inicializarDonaciones() {
                 if (irLogin) {
                     window.location.href = "login.html";
                 }
-                return; // Detiene proceso
+                return; 
             }
 
             // 2. VERIFICAR MONTO
@@ -201,27 +209,26 @@ function inicializarDonaciones() {
         modalPago.style.display = "none";
     });
 
-    // PROCESAR PAGO (AL SERVIDOR)
+    // PROCESAR PAGO (FETCH AL SERVIDOR)
     if(btnProcesar) {
         btnProcesar.addEventListener('click', async () => {
             const titular = document.getElementById("titular").value;
             if(!titular) { alert("Ingresa el nombre del titular"); return; }
 
-            // Loader
+            // Loader visual
             const loader = document.getElementById("loaderOverlay");
             if(loader) {
                 loader.classList.remove("hidden");
                 document.getElementById("loaderProgress").style.width = "100%";
             }
 
-            // Obtener ID Usuario
             const usuario = JSON.parse(localStorage.getItem('usuario'));
 
             const donacionData = {
                 Monto: cantidad,
                 UsuarioId: usuario.id,
                 Titular: titular,
-                OngId: 999
+                OngId: 999 // ID genérico para donación a plataforma
             };
 
             try {
@@ -240,7 +247,7 @@ function inicializarDonaciones() {
                     if(res.ok) {
                         modalTicket.style.display = "flex";
                         renderTicket(cantidad, titular);
-                        cargarEstadisticas(); // Actualizar contadores
+                        cargarEstadisticas(); // Actualizar contadores globales
                     } else {
                         alert("Error: " + result.message);
                     }
@@ -249,7 +256,7 @@ function inicializarDonaciones() {
             } catch (error) {
                 console.error(error);
                 if(loader) loader.classList.add("hidden");
-                alert("Error de conexión");
+                alert("Error de conexión con el servidor de pagos.");
             }
         });
     }
@@ -277,7 +284,7 @@ function renderTicket(monto, titular) {
     };
 }
 
-// GENERAR PDF
+// GENERAR PDF (Requiere jsPDF)
 function generarPDF(monto, nombre) {
     if (!window.jspdf) { alert("Librería PDF no cargada"); return; }
     const { jsPDF } = window.jspdf;
@@ -320,7 +327,7 @@ async function cargarComentariosPlataforma() {
             const avatarUrl = `https://ui-avatars.com/api/?name=${c.autor}&background=random`;
 
             const card = document.createElement("div");
-            card.classList.add("testimonial-card"); // ← IMPORTANTE
+            card.classList.add("testimonial-card");
 
             card.innerHTML = `
                 <div class="rating">
@@ -347,7 +354,7 @@ async function cargarComentariosPlataforma() {
 }
 
 // ==========================================
-// E. FORMULARIO DE COMENTARIOS (Lógica Auth)
+// E. FORMULARIO DE COMENTARIOS (Auth)
 // ==========================================
 function inicializarFormularioComentarios() {
     const usuarioStr = localStorage.getItem('usuario');
@@ -357,13 +364,13 @@ function inicializarFormularioComentarios() {
     // 1. Mostrar u ocultar según sesión
     if (usuarioStr) {
         const usuario = JSON.parse(usuarioStr);
-        // Si es usuario normal (Donante), mostramos form
+        // Si hay usuario logueado, mostramos el formulario
         if(divForm) {
             divForm.style.display = 'block';
             document.getElementById('nombreComentador').textContent = usuario.nombre;
         }
     } else {
-        // Si no hay sesión, mostrar botón de login
+        // Si no hay sesión, mostramos invitación a login
         if(divLogin) divLogin.style.display = 'block';
     }
 
@@ -397,7 +404,7 @@ function inicializarFormularioComentarios() {
                 if(res.ok) {
                     alert("¡Gracias por tu comentario!");
                     form.reset();
-                    cargarComentariosPlataforma(); // Recargar lista para ver el nuevo
+                    cargarComentariosPlataforma(); // Recargar lista al instante
                 } else {
                     alert("Error al enviar comentario.");
                 }

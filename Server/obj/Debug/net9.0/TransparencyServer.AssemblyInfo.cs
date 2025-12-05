@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TransparencyServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b81bb010ce90b7cfdb5ac6ace4378c1dc89db4fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("TransparencyServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TransparencyServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
